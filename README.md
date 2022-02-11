@@ -1,4 +1,4 @@
-# dss-scripts
+# helper-scripts
 
 This repository holds a series of scripts that are considered useful for MakerDAO’s operation.
 
