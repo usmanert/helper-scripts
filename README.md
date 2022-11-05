@@ -1,9 +1,6 @@
-# helper-scripts
+- first run triggerESM.sh to trigger ESM
+- second step run cageilk.sh for calling cage on each ilk
+- third step run esm_excess.sh to withdraw excess collateral
+- fourth run redeemDaiProxy.sh after 20 min
 
-This repository holds a series of scripts that are considered useful for MakerDAO’s operation.
-
-## Contents
-
-### `generateSig.js`
-
-This script generates a signature that can be used for DAI’s `permit` function. The output of this script was used for some tests in the [dss](https://github.com/makerdao/dss) repo.
+* run each command of the mentioned files above.
