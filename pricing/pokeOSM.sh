@@ -8,7 +8,7 @@
 
 echo "Sending PIP Poke tx..."
 
-tx=$(set -x; seth send  "$1" 'poke()')
+tx=$(set -x; seth send --async "$1" 'poke()')
 
 echo "TX: $tx"
 echo SUCCESS: "$(seth receipt "$tx" status)"
