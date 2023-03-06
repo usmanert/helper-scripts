@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
 # import all signers account using ethsign import and then run the script 
-# ./setOSMPrice $VAL_ETH $PIP_ETH Median=ETHUSD/BTCUSD OSM_DELAY
+# ./setOSMPrice $VAL_ETH $PIP_ETH Median=ETHUSD/BTCUSD
 # $1 = MEDIAN contract address
 # $2 = PIP contract address
 # $3 = wat
-# $4 = OSM Delay
 # $ETH_FROM = sender
 
 set -e
 set -u # or set -o nounset
+
+set -a
+source /data/helper-scripts/exportedVar
+set +a
+
 MEDIAN=$(seth --to-address "$1")
 PIP=$(seth --to-address "$2")
 wat=$3
 SYMBOL=$(echo "$3" | cut -c1-3)
-OSM_DELAY=$4
 MEGA_POKER=0xda05B95E8887ccDeE4AEA14b191db77ef7F084ea
 i=0
 
@@ -112,8 +115,14 @@ echo "TX: $tx"
 echo SUCCESS: "$(seth receipt "$tx" status)"
 echo GAS USED: "$(seth receipt "$tx" gasUsed)"
 
-echo "Waiting for $4 seconds, OSM delay to be passed..."
-sleep $4
+# calculating osm wait time
+waitTime=$(expr $(expr $(seth call $PIP "zzz()(uint256)") + $(seth call $PIP "hop()(uint256)")) - $(date +%s))
+
+if [ $(($waitTime)) -gt 0 ]
+then 
+    echo "Waiting for $waitTime seconds, OSM delay to be passed..."
+    sleep $waitTime
+fi
 
 echo "Sending PIP Poke tx..."
 
