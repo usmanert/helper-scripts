@@ -53,7 +53,7 @@ ilk_details () {
     echo "autoline: $(echo "$(echo "$AUTOLINE_DATA" | sed -n 1p)/10^45" |bc)"
     echo "autolineGap: $(echo "$(echo "$AUTOLINE_DATA" | sed -n 2p)/10^45" |bc)"
     echo "autolineTtl: $(echo "$AUTOLINE_DATA" | sed -n 3p)"
-    echo "duty: $(echo "$(echo "$JUG_DATA" | sed -n 1p)/10^18" |bc)"
+    echo "duty: $(echo "$(echo "$JUG_DATA" | sed -n 1p)/10^27" |bc)"
     echo "clip_chop: $(echo "$(echo "$DOG_DATA" | sed -n 2p)/10^18" |bc)"
     echo "clip_hole: $(echo "$(echo "$DOG_DATA" | sed -n 3p)/10^45" |bc)"
 
