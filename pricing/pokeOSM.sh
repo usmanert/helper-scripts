@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # import all signers account using ethsign import and then run the script
+
 # ./pokeOSM.sh $MEGA_POKER $PIP_ETH $MCD_SPOT .env
 # $1 = MegaPoker contract address
 # $2 = PIP Contract address
@@ -12,6 +13,7 @@ set -e
 set -u # or set -o nounset
 
 set -a
+
 source /data/helper-scripts/$4 # e.g. ethvar.bash with ETH_FROM and address details seth requires
 
 # Current Price
