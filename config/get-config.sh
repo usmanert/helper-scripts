@@ -36,6 +36,7 @@ export MCD_FLASH=$(seth call $CHAINLOG "getAddress(bytes32)(address)" $(seth --f
 export MCD_SPOT=$(seth call $CHAINLOG "getAddress(bytes32)(address)" $(seth --from-ascii "MCD_SPOT"))
 export MCD_IAM_AUTO_LINE=$(seth call $CHAINLOG "getAddress(bytes32)(address)" $(seth --from-ascii "MCD_IAM_AUTO_LINE"))
 export CLIPPER_MOM=$(seth call $CHAINLOG "getAddress(bytes32)(address)" $(seth --from-ascii "CLIPPER_MOM"))
+export MCD_PAUSE=$(seth call $CHAINLOG "getAddress(bytes32)(address)" $(seth --from-ascii "MCD_PAUSE"))
 
 # Per ilk detail fetcher
 ilk_details () {
@@ -53,14 +54,14 @@ ilk_details () {
     echo "autoline: $(echo "$(echo "$AUTOLINE_DATA" | sed -n 1p)/10^45" |bc)"
     echo "autolineGap: $(echo "$(echo "$AUTOLINE_DATA" | sed -n 2p)/10^45" |bc)"
     echo "autolineTtl: $(echo "$AUTOLINE_DATA" | sed -n 3p)"
-    echo "duty: $(echo "$(echo "$JUG_DATA" | sed -n 1p)/10^27" |bc)"
-    echo "clip_chop: $(echo "$(echo "$DOG_DATA" | sed -n 2p)/10^18" |bc)"
+    echo "duty: $(echo "$JUG_DATA" | sed -n 1p)"
+    echo "clip_chop: $(echo "($(echo "$DOG_DATA" | sed -n 2p)/10^16)-100" |bc)"
     echo "clip_hole: $(echo "$(echo "$DOG_DATA" | sed -n 3p)/10^45" |bc)"
 
     CLIP=$(echo "$DOG_DATA" | sed -n 1p)
     echo "clip_chip: $(echo "scale=3;$(seth call $CLIP "chip()(uint256)")/10^16" | bc)"
     echo "clip_tip: $(echo "$(seth call $CLIP "tip()(uint192)")/10^45" | bc)"
-    echo "clip_buf: $(echo "$(seth call $CLIP "buf()(uint256)")/10^27" | bc)"
+    echo "clip_buf: $(echo "$(seth call $CLIP "buf()(uint256)")/10^25" | bc)"
     echo "clip_tail: $(seth call $CLIP "tail()(uint256)")"
     echo "clip_cusp: $(echo "$(seth call $CLIP "cusp()(uint256)")/10^25" | bc)"
 
@@ -150,6 +151,9 @@ echo "flop_tau: $FLOP_TAU"
 
 export FLASH_MAX=$(echo "$(seth call $MCD_FLASH "max()(uint256)")/10^18" | bc)
 echo "flash_max: $FLASH_MAX"
+
+export PAUSE_DELAY=$(seth call $MCD_PAUSE "delay()(uint256)")
+echo "pause_delay: $PAUSE_DELAY"
 
 for i in "${ILKS[@]}"
 do
