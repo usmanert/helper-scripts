@@ -35,13 +35,17 @@ fi
 passed=$(seth call $2 "pass()(uint)")
 
 echo "Time has passed: $(seth call $2 "pass()(bool)")"
-if [[ $(echo "$passed==0"|bc) == 1 ]]; then
-	echo "Can't make tx yet as time hasn't passed"; exit 0
-fi
+if [[ $(echo "$passed==0"|bc) == 1 ]]; then 
+	echo "Can't make tx yet as time hasn't passed"; exit 0 
+fi 
 
 echo "Sending PIP Poke tx..."
+gas=$(seth basefee)
+echo "Gas: $gas"
+gas=$(echo "($gas*110)/100" | bc)
+echo "Gas Now: $gas"
 
-tx=$(set -x; seth send --async "$1" 'poke()')
+tx=$(set -x; seth send --async --gas-price $gas "$1" 'poke()')
 
 echo TX: $tx
 echo SUCCESS: "$(seth receipt "$tx" status)"
