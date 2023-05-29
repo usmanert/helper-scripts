@@ -1,0 +1,14 @@
+export ETH_RPC_URL=http://localhost:8545
+export ETH_FROM=0x8b00CcDFefdc511B20f5C10a2e08d41EF1F728Df
+export ETH_GAS_PRICE=30000000000
+export ETH_PASSWORD=
+export ETH_PRIO_FEE=3000000000
+
+export CONFIG_FILE=$PWD/config.json
+
+export CHANGELOG=0xBCe4D2D8595f65ce6c8b09582b83d49Ee0f287Da
+export dapp0_31_1='/nix/store/s3gai2byaqfyvy5s2mqc857d3lg5mgpd-dapp-0.31.1/bin/dapp'
+export DAPP_LIB='/nix/store/iggw40fhxbsw5nrnv0lb4m733qd572s3-dss-deploy-scripts-solidity-packages/dapp'
+export BIN_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/bin'
+export BIN_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/bin'
+export LIBEXEC_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/libexec'

@@ -1,0 +1,49 @@
+{
+    "tokens": {
+        "USDT": {
+            "import": {
+                "gem": "0xCDc8f24887b0BABDF4A6D25C7688C5F03bCE183d"
+            },
+            "joinDeploy": {
+                "src": "GemJoin",
+                "extraParams": []
+            },
+            "pipDeploy": {
+                "osmDelay": "3600",
+                "type": "median",
+                "quorum": 3,
+                "signers": [
+                    "0x125fC0CcCDee5ac474062F6358d4d056b0430b84",
+                    "0x37c273044A6ef7c9D09670C8246c49FF4CfD2511",
+                    "0x34050B9d0630594214008e3a2af07107B71831fd"
+                ]
+            },
+            "ilks": {
+                "A": {
+                    "mat": "120",
+                    "line": "0",
+                    "dust": "1000",
+                    "autoline": "0",
+                    "autolineGap": "0",
+                    "autolineTtl": "0",
+                    "duty": "1",
+                    "clipDeploy": {
+                        "chop": "13",
+                        "hole": "8000",
+                        "chip": "0.05",
+                        "tip": "7",
+                        "buf": "110",
+                        "tail": "7200",
+                        "cusp": "60",
+                        "calc": {
+                            "type": "StairstepExponentialDecrease",
+                            "step": "90",
+                            "cut": "99"
+                        },
+                        "cm_tolerance": "25"
+                    }
+                }
+            }
+        }
+    }
+}
