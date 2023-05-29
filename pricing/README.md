@@ -19,6 +19,20 @@ This script will sign pricing data and call median.poke, then call MegaPoker.pok
 - ./setOSMPrice.sh $VAL_ETH $PIP_ETH ETHUSD
 - ./setOSMPrice.sh $VAL_BTC $PIP_BTC BTCUSD
 
+# pokeOSM.sh
+This script will call the MegaPoker if price has been updated in the median AND if the time has passed.
+
+- ./pokeOSM.sh $MEGA_POKER $PIP_ETH $MCD_SPOT $VAL_ETH .env
+
+**NOTE:** It expects the .env file inside the `/data/helper-scripts/` folder. Moreover, it should include at least the following:
+```
+ETH_PASSWORD=/path/to/password-file
+ETH_KEYSTORE=/path/to/.ethereum/keystore
+ETH_FROM=0xabc123
+ETH_RPC_URL=https://mainnet.infura.io/v3/blahblahapikey
+
+```
+
 
 # cronjobs
 
