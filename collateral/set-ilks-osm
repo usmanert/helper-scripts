@@ -31,6 +31,8 @@ for token in $tokens; do
         if [[ "$osmDelay" -gt 0 ]]; then
             # Deploy OSM
             osm=$(dappCreate osm OSM "$(eval echo "\$VAL_${token}")")
+            log "Sending PIP's rely transaction:"
+            sethSend "$osm" 'rely(address)' "$MCD_PAUSE_PROXY" #set-pips-rights line:43
             eval "export PIP_${token}=${osm}"
             logAddr "PIP_${token}" "$osm"
             # Set OSM delay

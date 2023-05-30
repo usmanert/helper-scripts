@@ -50,6 +50,8 @@ for token in $tokens; do
         # Deploy Medianizer as Feed
         if [[ "$type" == "median" ]]; then
             contract=$(dappCreate testchain-medians "Median${token}GSU")
+            log "Sending Median's rely transaction:"
+            sethSend "$contract" 'rely(address)' "$MCD_PAUSE_PROXY" # set-pips-rights line 34
             eval "export VAL_${token}=${contract}"
             logAddr "VAL_${token}" "$(eval "echo ${contract}")"
             signers=$(jq -r ".tokens.${token} | .pipDeploy | .signers | .[]" "$CONFIG_FILE")
