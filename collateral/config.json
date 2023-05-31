@@ -1,11 +1,16 @@
 {
     "tokens": {
         "USDT": {
-            "import": {
-                "gem": "0xCDc8f24887b0BABDF4A6D25C7688C5F03bCE183d"
-            },
+            "gemDeploy": {
+                "src": "dss-gem-joins/USDT",
+                "params": [
+          "100000000000000"
+                ],
+                "faucetSupply": "99000000000000",
+                "faucetAmount": "100000000"
+              },
             "joinDeploy": {
-                "src": "GemJoin",
+                "src": "GemJoin7",
                 "extraParams": []
             },
             "pipDeploy": {
@@ -19,7 +24,31 @@
                 ]
             },
             "ilks": {
-                "A": {
+                 "K": {
+                    "mat": "120",
+                    "line": "0",
+                    "dust": "1000",
+                    "autoline": "0",
+                    "autolineGap": "0",
+                    "autolineTtl": "0",
+                    "duty": "1",
+                    "clipDeploy": {
+                        "chop": "13",
+                        "hole": "8000",
+                        "chip": "0.05",
+                        "tip": "7",
+                        "buf": "110",
+                        "tail": "7200",
+                        "cusp": "60",
+                        "calc": {
+                            "type": "StairstepExponentialDecrease",
+                            "step": "90",
+                            "cut": "99"
+                        },
+                        "cm_tolerance": "25"
+                    }
+                },
+                "M": {
                     "mat": "120",
                     "line": "0",
                     "dust": "1000",
