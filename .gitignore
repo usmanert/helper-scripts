@@ -1,2 +1,4 @@
 node_modules/
 out
+collateral/.env
+collateral/config.json
