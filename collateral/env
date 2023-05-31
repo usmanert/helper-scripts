@@ -1,14 +1,13 @@
 export ETH_RPC_URL=http://localhost:8545
-export ETH_FROM=0x8b00CcDFefdc511B20f5C10a2e08d41EF1F728Df
-export ETH_GAS_PRICE=30000000000
-export ETH_PASSWORD=
-export ETH_PRIO_FEE=3000000000
+export ETH_FROM=0x125fC0CcCDee5ac474062F6358d4d056b0430b84
+export ETH_GAS_PRICE=90000000000
+export ETH_PASSWORD=/home/usman/.ethereum/keystore/.pass
+export ETH_PRIO_FEE=9000000000
 
 export CONFIG_FILE=$PWD/config.json
 
-export CHANGELOG=0xBCe4D2D8595f65ce6c8b09582b83d49Ee0f287Da
+export CHANGELOG=0x2B05132842A288A8b3fD402F106c8D65919d51dB
 export dapp0_31_1='/nix/store/s3gai2byaqfyvy5s2mqc857d3lg5mgpd-dapp-0.31.1/bin/dapp'
-export DAPP_LIB='/nix/store/iggw40fhxbsw5nrnv0lb4m733qd572s3-dss-deploy-scripts-solidity-packages/dapp'
-export BIN_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/bin'
-export BIN_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/bin'
-export LIBEXEC_DIR='/nix/store/qsljhmpnb6b21fpm505ayinaii6ly92i-dss-deploy-scripts/libexec'
+export DAPP_LIB='/nix/store/x8q9pcfq8kkq9kiprfmflg1wiskd2anl-dss-deploy-scripts-solidity-packages/dapp'
+export BIN_DIR='/nix/store/pndcx8fvgvvz0cafy09q8jaxmi2k6v5j-dss-deploy-scripts/bin'
+export LIBEXEC_DIR='/nix/store/pndcx8fvgvvz0cafy09q8jaxmi2k6v5j-dss-deploy-scripts/libexec'
