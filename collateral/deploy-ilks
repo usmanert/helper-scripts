@@ -38,6 +38,8 @@ for token in $tokens; do
         ilkEnvVar="${token}_${ilk}"
 
         joinAddr=$(dappCreate dss-gem-joins "$joinSrc" "$MCD_VAT" "$ilkName" "$gemAddr" "${joinExtraParams[@]}")
+        log "Sending MCD_JOIN_$ilkName's rely transaction:"
+        sethSend "$joinAddr" 'rely(address)' "$MCD_PAUSE_PROXY" # base-deploy line:218
         logAddr "MCD_JOIN_${ilkEnvVar}" "$(eval "echo ${joinAddr}")"
 
         flipDeploy="$(jq ".tokens.${token}.ilks.${ilk} | .flipDeploy!=null" "$CONFIG_FILE")"
@@ -50,11 +52,12 @@ for token in $tokens; do
         else
             calcType=$(jq -r ".tokens.${token}.ilks.${ilk}.clipDeploy.calc.type | values" "$CONFIG_FILE")
             calc=$(dappCreate dss-deploy "$calcType")
-            logAddr "MCD_CLIP_CALC_${ilkEnvVar}" "${calc}"
             sethSend "$calc" 'rely(address)' "$MCD_PAUSE_PROXY"
-            sethSend "$calc" 'deny(address)' "$ETH_FROM" #can be moved in spell
+            # sethSend "$calc" 'deny(address)' "$ETH_FROM" # moved in spell
 
             clip=$(dappCreate dss-deploy "Clipper" "$MCD_VAT" "$MCD_SPOT" "$MCD_DOG" "$ilkName")
+            # Addition
+            sethSend "$clip" 'rely(address)' "$MCD_PAUSE_PROXY" # in dss-deploy-script it is handled with dss-deploy.deployCollateralClip()
         fi
 
         # Just in case there is a reorg or the node is not up to date we keep checking until getting a result
