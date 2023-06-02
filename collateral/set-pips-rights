@@ -32,7 +32,7 @@ for token in $tokens; do
         type=$(jq -r ".tokens.${token} | .pipDeploy | .type | values" "$CONFIG_FILE")
         if [[ "$type" == "median" ]]; then
             sethSend "$(eval echo "\$VAL_${token}")" 'rely(address)' "$MCD_PAUSE_PROXY"
-            # sethSend "$(eval echo "\$VAL_${token}")" 'deny(address)' "$ETH_FROM" #moved in spell
+            # sethSend "$(eval echo "\$VAL_${token}")" 'deny(address)' "$ETH_FROM" # moved in spell
         fi
         if [[ "${type}" == "value" ]]; then
             sethSend "$(eval echo "\$VAL_${token}")" 'setOwner(address)' "$MCD_PAUSE_PROXY"
@@ -41,7 +41,7 @@ for token in $tokens; do
         osmDelay=$(jq -r ".tokens.${token} | .pipDeploy | .osmDelay" "$CONFIG_FILE")
         if [[ "$osmDelay" -gt 0 ]]; then
             sethSend "$(eval echo "\$PIP_${token}")" 'rely(address)' "$MCD_PAUSE_PROXY"
-            # sethSend "$(eval echo "\$PIP_${token}")" 'deny(address)' "$ETH_FROM" #moved in spell
+            # sethSend "$(eval echo "\$PIP_${token}")" 'deny(address)' "$ETH_FROM" # moved in spell
         fi
     fi
 done
